@@ -27,4 +27,5 @@ int main() {
   
   printf("\nPrinting our reciprocal array.\n");
   printArrayPtrArithmeticReciprocal(arrayCopy, size);
+  
 }
