@@ -15,19 +15,23 @@ int main(int argc, char **argv) {
 
 // Here is the key line!  It allocates heap space for the array and creates a student pointer to the beginning of the heap space
   struct student *students = (struct student *) malloc(num_students * sizeof(struct student));
-  struct student *last = students + (num_students - 1);    // used to find the end of the array in the do loop below
+  // used to find the end of the array in the do loop below
+  struct student *last = students + (num_students - 1);
   float total_balance = 0;
 
-  for (int i = 0; i < num_students; i++) {  // need the loop counter for this one
+  // need the loop counter for this one
+  for (int i = 0; i < num_students; i++) {
     curr_student = students + i;
     curr_student->id = i + 1;
     curr_student->age = (int) ((double) rand() / RAND_MAX * 25 + 15);
     curr_student->balance_owed = (double) rand() / RAND_MAX * 10000;
   }
 
-  curr_student = students;          // make curr_student point to the beginning of the array
+  // make curr_student point to the beginning of the array
+  curr_student = students;
 
-  do {                    // no need for loop counter, so use simpler do...while
+  // no need for loop counter, so use simpler do...while
+  do {
     total_balance += curr_student->balance_owed;
     printf("Student %d is %d years old and owes $%8.2f\n", curr_student->id, curr_student->age,
            curr_student->balance_owed);
