@@ -1,39 +1,70 @@
 #include <malloc.h>
-#include "stdio.h"
+#include <time.h>
+#include <stdio.h>
 
-struct monster_attack {
+struct monster {
     int attackID;
     char location[50];
     char name[50];
     int victims;
 };
 
+int num_of_attacks() {
 
-int attackNum() {
-
-  int number = 0;
+  int n;
 
   puts("How many monster attacks should there be?");
-  scanf("%i", &number);
+  scanf("%i", &n);
 
-  return number;
+  return n;
 }
 
-void print_attacks(struct monster_attack *p) {
+void monster_attacks(struct monster *monsters, int size) {
 
+  // RNG
+  srand((unsigned int) time(NULL));
+
+  struct monster *current_monster;
+
+  for (int i = 1; i <= size; i++) {
+    current_monster = monsters + i;
+    current_monster->attackID = i;
+    printf("attack id %d\n", current_monster->attackID);
+
+    printf("Entering information about Attack #%i: \n", current_monster->attackID);
+    puts("Location of the attack?:");
+    scanf("%s", current_monster->location);
+
+    puts("Name of the monster?:");
+    scanf("%s", current_monster->name);
+  }
 }
+
+void print_attacks(struct monster *monsters, int size) {
+
+  for (int i = 0; i < size; i++) {
+    monsters += i;
+    printf("Attack #%d: \n", monsters->attackID);
+    printf("Location of attack: %s\n", monsters->location);
+    printf("Name of monster: %s\n", monsters->name);
+  }
+}
+
+void num_victims(struct monster *monsters, int size) {
+
+  monsters->victims = rand() / RAND_MAX * size;
+  printf("Number of victim(s): %d\n", monsters->victims);
+}
+
 
 int main(int argc, char const *argv[]) {
 
-  int num_attacks = attackNum();
+  const int size = num_of_attacks();
+  struct monster *monsters = (struct monster *) malloc(size * sizeof(struct monster));
 
-//  printf("%i", num_attacks);
-
-//  int numAttacks = numAttacks();
-
-  struct monster_attack *monsters = malloc(sizeof(struct monster_attack));
-
-
+  monster_attacks(monsters, size);
+  print_attacks(monsters, size);
+  num_victims(monsters, size);
 
   return 0;
 }
