@@ -24,10 +24,9 @@ void monster_attacks(struct monster *monsters, int size) {
   // RNG
   srand((unsigned int) time(NULL));
 
-  struct monster *current_monster;
+  struct monster *current_monster = monsters;
 
   for (int i = 1; i <= size; i++) {
-    current_monster = monsters + i;
     current_monster->attackID = i;
     printf("attack id %d\n", current_monster->attackID);
 
@@ -37,6 +36,7 @@ void monster_attacks(struct monster *monsters, int size) {
 
     puts("Name of the monster?:");
     scanf("%s", current_monster->name);
+    current_monster++;
   }
 }
 
