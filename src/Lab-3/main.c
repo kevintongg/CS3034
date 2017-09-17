@@ -43,10 +43,10 @@ void monster_attacks(struct monster *monsters, int size) {
 void print_attacks(struct monster *monsters, int size) {
 
   for (int i = 0; i < size; i++) {
-    monsters += i;
     printf("Attack #%d: \n", monsters->attackID);
     printf("Location of attack: %s\n", monsters->location);
     printf("Name of monster: %s\n", monsters->name);
+    monsters++;
   }
 }
 
