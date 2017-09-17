@@ -1,6 +1,7 @@
-#include <malloc.h>
+//#include <malloc.h>
 #include <time.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 struct monster {
     int attackID;
@@ -52,7 +53,7 @@ void print_attacks(struct monster *monsters, int size) {
 
 void num_victims(struct monster *monsters, int size) {
 
-  monsters->victims = rand() / RAND_MAX * size;
+  monsters->victims = (double) rand() / RAND_MAX * size;
   printf("Number of victim(s): %d\n", monsters->victims);
 }
 
