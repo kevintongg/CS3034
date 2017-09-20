@@ -12,8 +12,7 @@ struct monster {
 /**
  * https://stackoverflow.com/questions/17318886/fflush-is-not-working-in-linux
  */
-void clean_stdin()
-{
+void clean_stdin() {
   int c;
   do {
     c = getchar();
@@ -45,12 +44,11 @@ void monster_attacks(struct monster *monsters, int size) {
     puts("Name of the monster?");
     fgets(current_monster[i].name, sizeof(current_monster->name), stdin);
   }
-  
-  clean_stdin();
 }
 
 void print_attacks(struct monster *monsters, int size) {
   
+  puts("Now printing information about the monster attacks: ");
   for (int i = 0; i < size; i++) {
     printf("Attack #%i:\n", monsters->attackID);
     printf("Location of attack: %s\n", monsters->location);
