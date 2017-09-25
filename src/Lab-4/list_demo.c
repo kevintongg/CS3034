@@ -1,21 +1,6 @@
 #include <stdio.h>
 #include "linked_list.h"
 
-void show_menu() {
-  printf("\n--- C Linked List Demonstration --- \n\n");
-  printf("0.quit\n");
-  printf("1.prepend an element\n");
-  printf("2.append an element\n");
-  printf("3.search for an element\n");
-  printf("4.insert after an element\n");
-  printf("5.insert before an element\n");
-  printf("6.remove front node\n");
-  printf("7.remove back node\n");
-  printf("8.remove any node\n");
-  printf("9.sort the list\n");
-  printf("10.Reverse the linked list\n");
-}
-
 int main() {
   int command;
   int data;

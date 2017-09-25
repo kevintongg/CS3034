@@ -20,24 +20,24 @@ void clean_stdin() {
 }
 
 int num_of_attacks() {
-  
+
   int n;
-  
+
   puts("How many monster attacks should there be?");
   scanf("%i", &n);
-  
+
   clean_stdin();
-  
+
   return n;
 }
 
 void monster_attacks(struct monster *monsters, int size) {
-  
+
   struct monster *current_monster = monsters;
-  
+
   for (int i = 0; i < size; ++i) {
     current_monster[i].attackID = i + 1;
-    
+
     printf("Entering information about Attack #%d\n", current_monster[i].attackID);
     puts("Location of the attack?");
     fgets(current_monster[i].location, sizeof(current_monster->location), stdin);
@@ -47,7 +47,7 @@ void monster_attacks(struct monster *monsters, int size) {
 }
 
 void print_attacks(struct monster *monsters, int size) {
-  
+
   puts("Now printing information about the monster attacks: ");
   for (int i = 0; i < size; i++) {
     printf("Attack #%i:\n", monsters->attackID);
@@ -65,15 +65,15 @@ void num_victims(struct monster *monsters, int size) {
 
 
 int main(int argc, char const *argv[]) {
-  
+
   const int size = num_of_attacks();
   struct monster *monsters = (struct monster *) malloc(size * sizeof(struct monster));
-  
+
   monster_attacks(monsters, size);
   print_attacks(monsters, size);
   num_victims(monsters, size);
-  
+
   free(monsters);
-  
+
   return 0;
 }
