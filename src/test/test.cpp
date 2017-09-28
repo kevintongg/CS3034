@@ -1,45 +1,27 @@
-#include <iostream>
+#include <cmath>
+#include <cstdio>
 #include <vector>
-
+#include <iostream>
+#include <algorithm>
 using namespace std;
 
+long aVeryBigSum(int n, vector <long> ar) {
+  // Complete this function
+  long sum = 0;
+  for (long i : ar) {
+    sum += i;
+  }
+  return sum;
+}
+
 int main() {
-  cout << "Hello, World!" << endl;
-  
-  string test = "hello";
-  
-  cout << test << endl;
-  
-  std::vector<int> array;
-  
-  array.push_back(7);
-  array.push_back(4);
-  array.push_back(8);
-  array.push_back(5);
-  
-  cout << "original vector" << endl;
-  
-  for (auto i : array) {
-    cout << i << endl;
+  int n;
+  cin >> n;
+  vector<long> ar(n);
+  for(int ar_i = 0; ar_i < n; ar_i++){
+    cin >> ar[ar_i];
   }
-  
-  cout << "sorting" << endl;
-  
-  for (auto i = 0; i < array.size(); i++) {
-    for (auto j = i; j < array.size(); j++) {
-      if (array[j] < array[i]) {
-        auto temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-      }
-    }
-  }
-  
-  cout << "sorted vector" << endl;
-  
-  for (auto i : array) {
-    cout << i << endl;
-  }
-  
+  long result = aVeryBigSum(n, ar);
+  cout << result << endl;
   return 0;
 }
