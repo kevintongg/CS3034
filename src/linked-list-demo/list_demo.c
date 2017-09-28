@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "linked_list.h"
 
 void show_menu() {
@@ -14,20 +15,21 @@ void show_menu() {
   printf("8.remove any node\n");
   printf("9.sort the list\n");
   printf("10.Reverse the linked list\n");
+  printf("11.Prints the list");
 }
 
 int main() {
   int command;
   int data;
-
+  
   node *head = NULL;
   node *tmp = NULL;
-
+  
   do {
     show_menu();
     printf("\nEnter a command(0-10,0 to quit): ");
     scanf("%d", &command);
-
+    
     switch (command) {
       case 1:
         printf("Please enter a number to prepend: ");
@@ -73,7 +75,7 @@ int main() {
           printf("Enter the value to insert: ");
           scanf("%d", &data);
           head = insert_before(head, data, tmp);
-
+          
           if (head != NULL)
             traverse(head);
         } else {
@@ -112,12 +114,17 @@ int main() {
         if (head != NULL)
           traverse(head);
         break;
+      case 11:
+        if (head != NULL) {
+          print_list();
+        }
       default:
         break;
     }
-
+    
   } while (command != 0);
   clear(head);
+  free(head);
   return 0;
 }
 

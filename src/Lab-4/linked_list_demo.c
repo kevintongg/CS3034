@@ -1,15 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "linked_list.h"
+#include "linked_list_demo.h"
 
-void myTest() {
-  monster m1;
-  m1.attackID = 1;
-//  strc;
-  
-  // wilbertveit@rocketmail.com
-  
-}
 
 /**
  * https://stackoverflow.com/questions/17318886/fflush-is-not-working-in-linux
@@ -33,17 +25,7 @@ monster *create_monster_attack(monster *data, int counter) {
   puts("How many victims for this attack?");
   scanf("%i", &data[counter].victims);
   
-//  printf("Attack #: %i | Location: %s | Name: %s | Victims: %i", data[counter].attackID, data[counter].location,
-//         data[counter].name, data[counter].victims);
-  
-  printf("Attack#: %i\n", data[counter].attackID);
-  printf("Location: %s\n", data[counter].location);
-  printf("Name: %s\n", data[counter].name);
-  printf("Victims: %i\n", data[counter].victims);
-  
   clean_stdin();
-  
-  puts("done");
   
   return data;
 }
@@ -99,8 +81,9 @@ node *append(node *head, monster *data) {
     insert a new node after the prev node
 */
 node *insert_after(node *head, monster *data, node *prev) {
-  if (head == NULL || prev == NULL)
+  if (head == NULL || prev == NULL) {
     return NULL;
+  }
   /* find the prev node, starting from the first node*/
   node *cursor = head;
   while (cursor != prev)
@@ -119,8 +102,9 @@ node *insert_after(node *head, monster *data, node *prev) {
     insert a new node before the nxt node
 */
 node *insert_before(node *head, monster *data, node *nxt) {
-  if (nxt == NULL || head == NULL)
+  if (nxt == NULL || head == NULL) {
     return NULL;
+  }
   
   if (head == nxt) {
     head = prepend(head, data);
@@ -335,9 +319,20 @@ node *reverse(node *head) {
   return head;
 }
 
+void print_list(monster *data, int counter) {
+  for (int i = 0; i < counter; ++i) {
+    printf("\nAttack#: %i\n", data->attackID);
+    printf("\nLocation: %s\n", data->location);
+    printf("Name: %s\n", data->name);
+    printf("Victims: %i\n", data->victims);
+    data++;
+  }
+}
+
+
 void show_menu() {
-  printf("\n--- C Linked List Demonstration --- \n\n");
-  puts("0. Quit\n");
+  puts("\n––– C Monster Attack Linked List Demonstration ––– \n");
+  puts("0. Quit");
   puts("1. Prepend an element");
   puts("2. Append an element");
   puts("3. Search for an element");
@@ -348,118 +343,130 @@ void show_menu() {
   puts("8. Remove any node");
   puts("9. Sort the list");
   puts("10. Reverse the linked list");
-  puts("11. Print an element");
-  
+  puts("11. Print all the attacks in the linked list");
 }
 
 int main() {
   int command;
-  int counter = 1;
-  monster *data = (monster *) malloc(sizeof(monster));
+  int counter = 0;
+  int temp_search;
+  
+  monster *data = (monster *) malloc(20 * sizeof(monster));
   
   node *head = NULL;
   node *temp = NULL;
   
   do {
     show_menu();
-    printf("\nEnter a command (0-10, 0 to quit): ");
+    puts("\nEnter a command (0-11, 0 to quit): ");
     scanf("%d", &command);
     clean_stdin();
     switch (command) {
       case 1:
-        puts("before");
-        printf("counter before: %i\n", counter);
+        puts("Please enter a monster attack to prepend:");
         data = create_monster_attack(data, counter);
         counter++;
-        puts("after");
-        printf("counter after: %i\n", counter);
         head = prepend(head, data);
         traverse(head);
         break;
       case 2:
-        puts("before");
-        printf("Please enter a number to append: ");
-        create_monster_attack(data, counter);
+        puts("Please enter a monster attack to append: ");
+        data = create_monster_attack(data, counter);
         counter++;
-        puts("after");
         head = append(head, data);
         traverse(head);
         break;
       case 3:
-        printf("Please enter a number to search: ");
-        scanf("%d", &data->attackID);
-        temp = search(head, data[counter].attackID, counter);
+        puts("Please enter an attack ID value to search: ");
+        scanf("%i", &temp_search);
+        temp = search(head, temp_search, counter);
         if (temp != NULL) {
-          printf("Element with attack ID value %d found.", data->attackID);
+          printf("Element with attack ID value %i found.\n", temp_search);
         } else {
-          printf("Element with attack ID value %d not found.", data->attackID);
+          printf("Element with attack ID value %i not found.\n", temp_search);
         }
         break;
       case 4:
-        printf("Enter the element value after which you would like to insert the new value: ");
-        scanf("%p", &data);
+        puts("Enter the attack ID value after which you would like to insert the new value: ");
+        scanf("%i", &data->attackID);
+        clean_stdin();
         temp = search(head, data[counter].attackID, counter);
         if (temp != NULL) {
-          printf("Enter the value to insert: ");
-          scanf("%p", &data);
+          puts("Please enter a monster attack to insert: ");
+          data = create_monster_attack(data, counter);
+          counter++;
           head = insert_after(head, data, temp);
-          if (head != NULL)
+          if (head != NULL) {
             traverse(head);
+          }
         } else {
-          printf("Element with value %p not found.", data);
+          printf("Element with attack ID value %i not found.", data->attackID);
         }
         break;
       case 5:
-        printf("Enter the element value before which you would like to insert a new value: ");
-        scanf("%p", &data);
+        puts("Enter the attack ID value before which you would like to insert a new value: ");
+        scanf("%i", &data->attackID);
+        clean_stdin();
         temp = search(head, data[counter].attackID, counter);
         if (temp != NULL) {
-          printf("Enter the value to insert: ");
-          scanf("%p", &data);
+          puts("Please enter a monster attack to insert: ");
+          create_monster_attack(data, counter);
+          counter++;
           head = insert_before(head, data, temp);
-          
-          if (head != NULL)
+          if (head != NULL) {
             traverse(head);
+          }
         } else {
           printf("Element with value %p not found.", data);
         }
         break;
       case 6:
         head = remove_front(head);
-        if (head != NULL)
+        if (head != NULL) {
           traverse(head);
+          
+        }
         break;
       case 7:
         head = remove_back(head);
-        if (head != NULL)
+        if (head != NULL) {
           traverse(head);
+        }
         break;
       case 8:
-        printf("Enter the element value to remove: ");
-        scanf("%p", &data);
+        puts("Enter the element value to remove: ");
+        scanf("%i", &data[counter].attackID);
         temp = search(head, data[counter].attackID, counter);
         if (temp != NULL) {
           remove_any(head, temp);
-          if (head != NULL)
+          if (head != NULL) {
             traverse(head);
+          }
         } else {
-          printf("Element with value %p not found.", data);
+          printf("Element with attack ID value %i not found.", data->attackID);
         }
         break;
       case 9:
         head = insertion_sort(head);
-        if (head != NULL)
+        if (head != NULL) {
           traverse(head);
+        }
         break;
       case 10:
         head = reverse(head);
-        if (head != NULL)
+        if (head != NULL) {
           traverse(head);
+        }
         break;
+      case 11:
+        if (head != NULL) {
+          print_list(data, counter);
+        } else {
+          puts("No linked list exists.");
+        }
       default:
         break;
     }
-    
   } while (command != 0);
   free(data);
   return 0;

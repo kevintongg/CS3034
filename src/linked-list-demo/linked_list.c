@@ -190,7 +190,7 @@ node *remove_any(node *head, node *nd) {
 */
 void display(node *n) {
   if (n != NULL)
-    printf("%d ", n->data);
+    printf("The element is: %d ", n->data);
 }
 
 /*
