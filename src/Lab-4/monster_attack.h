@@ -6,11 +6,10 @@
 #define MONSTER_ATTACK
 
 typedef struct monster {
-    int attackID;
-    char location[50];
-    char name[50];
-    int victims;
+  int attackID;
+  char location[50];
+  char name[50];
+  int victims;
 } monster;
-
 
 #endif //MONSTER_ATTACK

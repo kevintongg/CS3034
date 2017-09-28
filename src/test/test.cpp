@@ -6,6 +6,10 @@ using namespace std;
 int main() {
   cout << "Hello, World!" << endl;
   
+  string test = "hello";
+  
+  cout << test << endl;
+  
   std::vector<int> array;
   
   array.push_back(7);
