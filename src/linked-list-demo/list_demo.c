@@ -3,19 +3,19 @@
 #include "linked_list.h"
 
 void show_menu() {
-  printf("\n--- C Linked List Demonstration --- \n\n");
-  printf("0.quit\n");
-  printf("1.prepend an element\n");
-  printf("2.append an element\n");
-  printf("3.search for an element\n");
-  printf("4.insert after an element\n");
-  printf("5.insert before an element\n");
-  printf("6.remove front node\n");
-  printf("7.remove back node\n");
-  printf("8.remove any node\n");
-  printf("9.sort the list\n");
-  printf("10.Reverse the linked list\n");
-  printf("11.Prints the list");
+  puts("\n--- C Linked List Demonstration --- \n\n");
+  puts("0.quit\n");
+  puts("1.prepend an element\n");
+  puts("2.append an element\n");
+  puts("3.search for an element\n");
+  puts("4.insert after an element\n");
+  puts("5.insert before an element\n");
+  puts("6.remove front node\n");
+  puts("7.remove back node\n");
+  puts("8.remove any node\n");
+  puts("9.sort the list\n");
+  puts("10.Reverse the linked list\n");
+  puts("11.Prints the list");
 }
 
 int main() {
