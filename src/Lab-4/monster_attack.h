@@ -7,8 +7,8 @@
 
 typedef struct monster {
   int attackID;
-  char location[50];
-  char name[50];
+  char location[128];
+  char name[128];
   int victims;
 } monster;
 
