@@ -43,7 +43,7 @@ node *create(monster *data, node *next) {
     printf("Error creating a new node.\n");
     exit(0);
   }
-  new_node->data = data;
+  new_node->monster = data;
   new_node->next = next;
   
   return new_node;
@@ -214,14 +214,24 @@ node *remove_any(node *head, node *nd) {
 /*
     display a node
 */
-void display(node *n, int counter) {
+void  display(node *n, int counter) {
   if (n != NULL) {
+    /*
+     *
+     * Could also display all the data here
+     * but already made a function to print
+     * the linked list
+     *
+     * Commented for if I did not have a print
+     * function
+     *
+     */
 //    printf("\nAttack #: %i\n", n->data->attackID);
 //    printf("Location: %s\n", n->data->location);
 //    printf("Name: %s\n", n->data->name);
 //    printf("Victims: %i\n", n->data->victims);
-    printf("\nAttack ID: %i\n",n->data->attackID);
-    n->data++;
+    printf("\nAttack ID: %i\n", n->monster->attackID);
+    n->monster++;
   }
 }
 
@@ -235,7 +245,7 @@ node *search(node *head, int id) {
   
   node *cursor = head;
   while (cursor != NULL) {
-    if (cursor->data->attackID == id) {
+    if (cursor->monster->attackID == id) {
       return cursor;
     }
     cursor = cursor->next;
@@ -285,12 +295,12 @@ node *insertion_sort(node *head) {
     e = x;
     x = x->next;
     if (head != NULL) {
-      if (e->data->attackID > head->data->attackID) {
+      if (e->monster->attackID > head->monster->attackID) {
         y = head;
-        while ((y->next != NULL) && (e->data->attackID > y->next->data->attackID)) {
+        while ((y->next != NULL) && (e->monster->attackID > y->next->monster->attackID)) {
           y = y->next;
         }
-        e->next->data->attackID = y->next->data->attackID;
+        e->next->monster->attackID = y->next->monster->attackID;
         y->next = e;
       } else {
         e->next = head;

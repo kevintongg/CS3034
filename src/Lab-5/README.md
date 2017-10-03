@@ -4,7 +4,7 @@ Important: this application must compile using the std=c11 option. The current l
 
 Write code to keep a generic linked list. This linked list will be able to store any kind of struct that has an int id field.
 
-* Start with your work from Lab 3. Review the lecture slides on function pointers and the function pointer example code that is linked from the course web page.
+* Start with your work from Lab 4. Review the lecture slides on function pointers and the function pointer example code that is linked from the course web page.
 * You will need to change the node structure so that data is a void pointer rather than a pointer to a monster_attack. Your linked list code should have no references to monster_attack
 * The linked list code will need function pointers to functions that
   * Display the information on an instance of the specific struct type used in a list.

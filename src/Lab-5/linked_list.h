@@ -2,15 +2,12 @@
 #define LINKED_LIST
 
 #include "monster_attack.h"
+#include "student.h"
 
 typedef struct node {
-  monster *monster;
+  void *data;
   struct node *next;
 } node;
-
-void clean_stdin();
-
-monster *create_monster_attack(monster *data, int counter);
 
 /*
     create a new node
@@ -18,27 +15,27 @@ monster *create_monster_attack(monster *data, int counter);
  
     return the newly created node
 */
-node *create(monster *data, node *next);
+node *create(void *data, node *next);
 
 /*
     add a new node at the beginning of the list
 */
-node *prepend(node *head, monster *data);
+node *prepend(node *head, void *data);
 
 /*
     add a new node at the end of the list
 */
-node *append(node *head, monster *data);
+node *append(node *head, void *data);
 
 /*
     insert a new node after the prev node
 */
-node *insert_after(node *head, monster *data, node *prev);
+node *insert_after(node *head, void *data, node *prev);
 
 /*
     insert a new node before the nxt node
 */
-node *insert_before(node *head, monster *data, node *nxt);
+node *insert_before(node *head, void *data, node *nxt);
 
 /*
     traverse the linked list
@@ -87,6 +84,6 @@ node *insertion_sort(node *head);
 */
 node *reverse(node *head);
 
-void print_list(monster *data, int n);
+void print_list(void *data, int n);
 
 #endif
