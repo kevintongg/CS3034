@@ -1,8 +1,15 @@
-#include "stdio.h"
-#include "time.h"
+#include <stdio.h>
+
+// A normal function with an int parameter
+// and void return type
+void fun(int a) {
+  printf("Value of a is %d\n", a);
+}
 
 int main() {
+  void (*fun_ptr)(int) = fun;  // & removed
 
-  srand((unsigned int) time(NULL));
+  fun_ptr(10);  // * removed
 
+  return 0;
 }

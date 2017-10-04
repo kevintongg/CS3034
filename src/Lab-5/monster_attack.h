@@ -6,16 +6,18 @@
 #define MONSTER_ATTACK
 
 typedef struct monster {
-  int attackID;
+  int id;
   char location[128];
   char name[128];
   int victims;
 } monster;
 
-void monster_attacks(monster *monster, int size);
+void clean_stdin();
 
-void print_attacks(monster *monsters, int size, int victims);
+monster *create_monster(monster *monster, int counter);
 
-int num_victims(monster *monsters, int size);
+void *print_monster(monster *monster);
+
+int id(monster *monster);
 
 #endif //MONSTER_ATTACK

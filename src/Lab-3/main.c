@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 struct monster {
-  int attackID;
+  int id;
   char location[50];
   char name[50];
   int victims;
@@ -36,9 +36,9 @@ void monster_attacks(struct monster *monsters, int size) {
   struct monster *current_monster = monsters;
 
   for (int i = 0; i < size; ++i) {
-    current_monster[i].attackID = i + 1;
+    current_monster[i].id = i + 1;
 
-    printf("Entering information about Attack #%d\n", current_monster[i].attackID);
+    printf("Entering information about Attack #%d\n", current_monster[i].id);
     puts("Location of the attack?");
     fgets(current_monster[i].location, sizeof(current_monster->location), stdin);
     puts("Name of the monster?");
@@ -50,7 +50,7 @@ void print_attacks(struct monster *monsters, int size) {
 
   puts("Now printing information about the monster attacks: ");
   for (int i = 0; i < size; i++) {
-    printf("Attack #%i:\n", monsters->attackID);
+    printf("Attack #%i:\n", monsters->id);
     printf("Location of attack: %s\n", monsters->location);
     printf("Name of monster: %s\n", monsters->name);
     monsters++;

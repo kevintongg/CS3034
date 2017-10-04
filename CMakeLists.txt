@@ -5,5 +5,6 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 14)
 
 set(SOURCE_FILES src/lab-5/main.c src/lab-5/monster_attack.h src/lab-5/student.h src/lab-5/student.c src/lab-5/monster_attack.c)
+#set(SOURCE_FILES src/test/test.c)
 
 add_executable(CS3034 ${SOURCE_FILES})

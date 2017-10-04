@@ -1,12 +1,9 @@
 #ifndef LINKED_LIST
 #define LINKED_LIST
 
-#include "monster_attack.h"
-#include "student.h"
-
 typedef struct node {
-  void *data;
-  struct node *next;
+    void *data;
+    struct node *next;
 } node;
 
 /*
@@ -40,7 +37,7 @@ node *insert_before(node *head, void *data, node *nxt);
 /*
     traverse the linked list
 */
-void traverse(node *head, int counter);
+void traverse(node *head, void *print);
 
 /*
     remove node from the front of list
@@ -60,9 +57,9 @@ node *remove_any(node *head, node *nd);
 /*
     display a node
 */
-void display(node *n, int counter);
+void display(node *n, void *(output)(void *ptr));
 
-node *search(node *head, int id);
+node *search(node *head, int input, int *(*id)(void *ptr));
 
 /*
     remove all element of the list
@@ -83,7 +80,5 @@ node *insertion_sort(node *head);
     reverse the linked list
 */
 node *reverse(node *head);
-
-void print_list(void *data, int n);
 
 #endif

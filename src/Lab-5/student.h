@@ -6,11 +6,17 @@
 #define STUDENT
 
 typedef struct student {
-  int id;
-  char name[48];
-  int cin;
+    int id;
+    char name[128];
+    int cin;
 } student;
 
-student *makeStudent(student *student, int size);
+void clean_stdin();
+
+student *create_student(student *student, int counter);
+
+void print(student *student);
+
+int id(student *student);
 
 #endif // STUDENT
