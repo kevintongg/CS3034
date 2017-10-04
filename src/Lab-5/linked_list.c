@@ -288,12 +288,3 @@ node *reverse(node *head) {
   head = prev;
   return head;
 }
-
-void print_list(monster *data, int n) {
-  for (int i = 0; i < n; ++i) {
-    printf("\nAttack ID: %i\n\n", data->id);
-    printf("Location: %s\n", data->location);
-    printf("Name: %s\n", data->name);
-    printf("Victims: %i\n", data->victims);
-  }
-}
