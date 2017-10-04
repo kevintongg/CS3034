@@ -5,16 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "monster_attack.h"
-
-/**
- * https://stackoverflow.com/questions/17318886/fflush-is-not-working-in-linux
- */
-void clean_stdin() {
-  int c;
-  do {
-    c = getchar();
-  } while (c != '\n' && c != EOF);
-}
+#include "clean.h"
 
 monster *create_monster(monster *data, int counter) {
 
@@ -37,13 +28,13 @@ monster *create_monster(monster *data, int counter) {
   return data;
 }
 
-void *print_monster(monster *data) {
+void print_monster(monster *data) {
   printf("\nMonster ID: %i\n", data->id);
   printf("Monster name: %s\n", data->name);
   printf("Attack location: %s\n", data->location);
   printf("Number of victims: %i\n", data->victims);
 }
 
-int id(monster *monster) {
+int getId(monster *monster) {
   return monster->id;
 }

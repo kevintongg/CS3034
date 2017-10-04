@@ -12,12 +12,10 @@ typedef struct monster {
   int victims;
 } monster;
 
-void clean_stdin();
-
 monster *create_monster(monster *monster, int counter);
 
-void *print_monster(monster *monster);
+void print_monster(monster *monster);
 
-int id(monster *monster);
+int getId(monster *monster);
 
 #endif //MONSTER_ATTACK

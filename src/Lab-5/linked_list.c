@@ -3,34 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "linked_list.h"
-#include "../Lab-4/linked_list.h"
-
-/**
- * https://stackoverflow.com/questions/17318886/fflush-is-not-working-in-linux
- */
-void clean_stdin() {
-  int c;
-  do {
-    c = getchar();
-  } while (c != '\n' && c != EOF);
-}
-
-monster *create_monster(monster *data, int counter) {
-
-  data[counter].id = counter;
-
-  printf("\nEntering information about Monster #%d\n", counter);
-  puts("Location of the attack?");
-  fgets(data[counter].location, sizeof(data->location), stdin);
-  puts("Name of the monster?");
-  fgets(data[counter].name, sizeof(data->name), stdin);
-  puts("How many victims for this attack?");
-  scanf("%i", &data[counter].victims);
-
-  clean_stdin();
-
-  return data;
-}
 
 /*
     create a new node

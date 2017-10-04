@@ -4,16 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "student.h"
+#include "clean.h"
 
-/**
- * https://stackoverflow.com/questions/17318886/fflush-is-not-working-in-linux
- */
-void clean_stdin() {
-  int c;
-  do {
-    c = getchar();
-  } while (c != '\n' && c != EOF);
-}
 
 student *create_student(student *data, int counter) {
 
@@ -34,8 +26,10 @@ student *create_student(student *data, int counter) {
   return data;
 }
 
-void print(student *data) {
-
+void print_student(student *data) {
+  printf("\nStudent ID: %i\n", data->id);
+  printf("Student name: %s\n", data->name);
+  printf("Attack location: %i\n", data->cin);
 }
 
 int id(student *data) {

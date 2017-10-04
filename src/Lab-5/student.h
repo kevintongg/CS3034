@@ -11,11 +11,9 @@ typedef struct student {
     int cin;
 } student;
 
-void clean_stdin();
-
 student *create_student(student *student, int counter);
 
-void print(student *student);
+void print_student(student *student);
 
 int id(student *student);
 
