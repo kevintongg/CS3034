@@ -4,13 +4,40 @@
 #include <stdlib.h>
 #include "linked_list.h"
 
+/**
+ * https://stackoverflow.com/questions/17318886/fflush-is-not-working-in-linux
+ */
+void clean_stdin() {
+  int c;
+  do {
+    c = getchar();
+  } while (c != '\n' && c != EOF);
+}
+
+monster *create_monster_attack(monster *data, int counter) {
+  
+  data[counter].attackID = counter;
+  
+  printf("\nEntering information about Monster #%d\n", counter);
+  puts("Location of the attack?");
+  fgets(data[counter].location, sizeof(data->location), stdin);
+  puts("Name of the monster?");
+  fgets(data[counter].name, sizeof(data->name), stdin);
+  puts("How many victims for this attack?");
+  scanf("%i", &data[counter].victims);
+  
+  clean_stdin();
+  
+  return data;
+}
+
 /*
     create a new node
     initialize the data and next field
  
     return the newly created node
 */
-node *create(void *data, node *next) {
+node *create(monster *data, node *next) {
   node *new_node = (node *) malloc(sizeof(node));
   if (new_node == NULL) {
     printf("Error creating a new node.\n");
@@ -25,7 +52,7 @@ node *create(void *data, node *next) {
 /*
     add a new node at the beginning of the list
 */
-node *prepend(node *head, void *data) {
+node *prepend(node *head, monster *data) {
   node *new_node = create(data, head);
   head = new_node;
   return head;
@@ -34,7 +61,7 @@ node *prepend(node *head, void *data) {
 /*
     add a new node at the end of the list
 */
-node *append(node *head, void *data) {
+node *append(node *head, monster *data) {
   if (head == NULL) head = create(data, head);
   else {
     /* go to the last node */
@@ -52,7 +79,7 @@ node *append(node *head, void *data) {
 /*
     insert a new node after the prev node
 */
-node *insert_after(node *head, void *data, node *prev) {
+node *insert_after(node *head, monster *data, node *prev) {
   if (head == NULL || prev == NULL)
     return NULL;
   /* find the prev node, starting from the first node*/
@@ -72,7 +99,7 @@ node *insert_after(node *head, void *data, node *prev) {
 /*
     insert a new node before the nxt node
 */
-node *insert_before(node *head, void *data, node *nxt) {
+node *insert_before(node *head, monster *data, node *nxt) {
   if (nxt == NULL || head == NULL)
     return NULL;
   
@@ -101,10 +128,10 @@ node *insert_before(node *head, void *data, node *nxt) {
 /*
     traverse the linked list
 */
-void traverse(node *head, void(*print)) {
+void traverse(node *head, int counter) {
   node *cursor = head;
   while (cursor != NULL) {
-    display(cursor, print);
+    display(cursor, counter);
     cursor = cursor->next;
   }
   printf("\n");
@@ -187,9 +214,24 @@ node *remove_any(node *head, node *nd) {
 /*
     display a node
 */
-void display(node *n, void *(*print)(void *ptr)) {
+void display(node *n, int counter) {
   if (n != NULL) {
-    print(n->data);
+    /*
+     *
+     * Could also display all the data here
+     * but already made a function to print
+     * the linked list
+     *
+     * Commented for if I did not have a print
+     * function
+     *
+     */
+//    printf("\nAttack #: %i\n", n->data->attackID);
+//    printf("Location: %s\n", n->data->location);
+//    printf("Name: %s\n", n->data->name);
+//    printf("Victims: %i\n", n->data->victims);
+    printf("\nAttack ID: %i\n", n->data->attackID);
+    n->data++;
   }
 }
 
@@ -199,11 +241,11 @@ void display(node *n, void *(*print)(void *ptr)) {
     return the first matched node that stores the input data,
     otherwise return NULL
 */
-node *search(node *head, int searchId, int *(*id)(void *ptr)) {
+node *search(node *head, int id) {
   
   node *cursor = head;
   while (cursor != NULL) {
-    if (searchId == (int) id(cursor->data)) {
+    if (cursor->data->attackID == id) {
       return cursor;
     }
     cursor = cursor->next;
@@ -253,12 +295,12 @@ node *insertion_sort(node *head) {
     e = x;
     x = x->next;
     if (head != NULL) {
-      if (e->data > head->data) {
+      if (e->data->attackID > head->data->attackID) {
         y = head;
-        while ((y->next != NULL) && (e->data > y->next->data)) {
+        while ((y->next != NULL) && (e->data->attackID > y->next->data->attackID)) {
           y = y->next;
         }
-        e->next->data = y->next->data;
+        e->next->data->attackID = y->next->data->attackID;
         y->next = e;
       } else {
         e->next = head;
@@ -287,4 +329,13 @@ node *reverse(node *head) {
   }
   head = prev;
   return head;
+}
+
+void print_list(monster *data, int n) {
+  for (int i = 0; i < n; ++i) {
+    printf("\nAttack ID: %i\n\n", data->attackID);
+    printf("Location: %s\n", data->location);
+    printf("Name: %s\n", data->name);
+    printf("Victims: %i\n", data->victims);
+  }
 }

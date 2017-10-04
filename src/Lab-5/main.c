@@ -24,31 +24,35 @@ void show_menu() {
 int main(int argc, char const *argv[]) {
   int command;
   char choice;
-
+  
   node *head = NULL;
   node *temp = NULL;
-
+  
   int counter = 0;
   int temp_num = 0;
-
-  void *(*create)(void *ptr) = NULL;
-  void *(*print)(void *ptr) = NULL;
-  int *(*id)(void *ptr) = NULL;
-  void *data = NULL;
-
+  
+  void *(*create)(void *ptr, int n);
+  void *(*print)(void *ptr);
+  int *(*id)(void *ptr);
+  void *data;
+  
   puts("Choose 'm' for monsters or 's' for students");
   choice = (char) getchar();
   clean_stdin();
   if (choice == 'm') {
+    data = (monster *) malloc(25 * sizeof(monster));
     create = (void *) create_monster;
     print = (void *) print_monster;
-    id = (int *(*)(void *)) (int *) getId;
+    id = (int *(*)(void *)) (int *) getMonsterId;
   } else if (choice == 's') {
+    data = (student *) malloc(25 * sizeof(student));
     create = (void *) create_student;
+    print = (void*) print_student;
+    id = (int *(*)(void *)) (int*) getStudentId;
   } else {
     puts("Try again!");
   }
-
+  
   do {
     show_menu();
     printf("\nEnter a command (0-10, 0 to quit): ");
@@ -57,17 +61,17 @@ int main(int argc, char const *argv[]) {
     switch (command) {
       case 1:
         printf("Please enter data to prepend: ");
-        data = create(data);
+        data = create(data, counter);
         counter++;
         head = prepend(head, data);
-        traverse(head, data);
+        traverse(head, print);
         break;
       case 2:
         printf("Please enter data to append: ");
-        data = create(data);
+        data = create(data, counter);
         counter++;
         head = append(head, data);
-        traverse(head, data);
+        traverse(head, print);
         break;
       case 3:
         printf("Please enter an ID to search: ");
@@ -87,11 +91,11 @@ int main(int argc, char const *argv[]) {
         temp = search(head, temp_num, id);
         if (temp != NULL) {
           printf("Enter data to insert: ");
-          data = create(data);
+          data = create(data, counter);
           counter++;
           head = insert_after(head, data, temp);
           if (head != NULL)
-            traverse(head, data);
+            traverse(head, print);
         } else {
           printf("Element with value %i not found.", temp_num);
         }
@@ -103,7 +107,7 @@ int main(int argc, char const *argv[]) {
         temp = search(head, temp_num, id);
         if (temp != NULL) {
           printf("Enter data to insert: ");
-          data = create(data);
+          data = create(data, counter);
           counter++;
           head = insert_before(head, data, temp);
           if (head != NULL)
@@ -148,7 +152,7 @@ int main(int argc, char const *argv[]) {
       default:
         break;
     }
-
+    
   } while (command != 0);
   clear(data);
   return 0;

@@ -1,10 +1,16 @@
 #ifndef LINKED_LIST
 #define LINKED_LIST
 
+#include "monster_attack.h"
+
 typedef struct node {
-    void *data;
-    struct node *next;
+  monster *data;
+  struct node *next;
 } node;
+
+void clean_stdin();
+
+monster *create_monster_attack(monster *data, int counter);
 
 /*
     create a new node
@@ -12,32 +18,32 @@ typedef struct node {
  
     return the newly created node
 */
-node *create(void *data, node *next);
+node *create(monster *data, node *next);
 
 /*
     add a new node at the beginning of the list
 */
-node *prepend(node *head, void *data);
+node *prepend(node *head, monster *data);
 
 /*
     add a new node at the end of the list
 */
-node *append(node *head, void *data);
+node *append(node *head, monster *data);
 
 /*
     insert a new node after the prev node
 */
-node *insert_after(node *head, void *data, node *prev);
+node *insert_after(node *head, monster *data, node *prev);
 
 /*
     insert a new node before the nxt node
 */
-node *insert_before(node *head, void *data, node *nxt);
+node *insert_before(node *head, monster *data, node *nxt);
 
 /*
     traverse the linked list
 */
-void traverse(node *head, void *print);
+void traverse(node *head, int counter);
 
 /*
     remove node from the front of list
@@ -57,9 +63,9 @@ node *remove_any(node *head, node *nd);
 /*
     display a node
 */
-void display(node *n, void *(print)(void *ptr));
+void display(node *n, int counter);
 
-node *search(node *head, int searchId, int *(*id)(void *ptr));
+node *search(node *head, int id);
 
 /*
     remove all element of the list
@@ -80,5 +86,7 @@ node *insertion_sort(node *head);
     reverse the linked list
 */
 node *reverse(node *head);
+
+void print_list(monster *data, int n);
 
 #endif
