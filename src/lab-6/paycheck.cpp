@@ -10,7 +10,7 @@
 using namespace std;
 
 Paycheck::Paycheck(string employeeId, string firstName, string lastName, double paycheckAmount) : employeeId(
-    employeeId), firstName(firstName), lastName(lastName), paycheckAmount(paycheckAmount) {
+    move(employeeId)), firstName(move(firstName)), lastName(move(lastName)), paycheckAmount(paycheckAmount) {
   
 }
 
@@ -25,4 +25,36 @@ string Paycheck::getPaycheck() {
   return "Paycheck issued for $" + payFixedPrecision + "; Paid to the order of: " + firstName + lastName +
          ", Employee #" + employeeId +
          "\n";
+}
+
+double Paycheck::getPaycheckAmount() const {
+  return paycheckAmount;
+}
+
+void Paycheck::setPaycheckAmount(double paycheckAmount) {
+  Paycheck::paycheckAmount = paycheckAmount;
+}
+
+const string &Paycheck::getEmployeeId() const {
+  return employeeId;
+}
+
+void Paycheck::setEmployeeId(const string &employeeId) {
+  Paycheck::employeeId = employeeId;
+}
+
+const string &Paycheck::getFirstName() const {
+  return firstName;
+}
+
+void Paycheck::setFirstName(const string &firstName) {
+  Paycheck::firstName = firstName;
+}
+
+const string &Paycheck::getLastName() const {
+  return lastName;
+}
+
+void Paycheck::setLastName(const string &lastName) {
+  Paycheck::lastName = lastName;
 }

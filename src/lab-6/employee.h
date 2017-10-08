@@ -13,8 +13,28 @@ class Employee {
 
 public:
   Employee(string employeeId, string firstName, string lastName, double wage, int hours);
-
+  
   double calcPay(double wage, int hours);
+  
+  const string &getEmployeeId() const;
+  
+  void setEmployeeId(const string &employeeId);
+  
+  const string &getFirstName() const;
+  
+  void setFirstName(const string &firstName);
+  
+  const string &getLastName() const;
+  
+  void setLastName(const string &lastName);
+  
+  double getWage() const;
+  
+  void setWage(double wage);
+  
+  int getHours() const;
+  
+  void setHours(int hours);
 
 private:
   string employeeId;

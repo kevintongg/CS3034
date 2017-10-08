@@ -3,27 +3,13 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "monster_attack.h"
 #include "clean.h"
-//
-//monster *create_monster(monster *data, int counter) {
-//
-//  data[counter].id = counter;
-//
-//  printf("\nEntering information about Monster #%i\n", counter);
-//  puts("Location of the attack?");
-//  fgets(data[counter].location, sizeof(data->location), stdin);
-//  puts("Name of the monster?");
-//  fgets(data[counter].name, sizeof(data->name), stdin);
-//  puts("How many victims for this attack?");
-//  scanf("%i", &data[counter].victims);
-//
-//  clean_stdin();
-//
-//  return data;
-//}
 
 monster *create_monster(monster *data, int counter) {
+  
+  data = (monster *) malloc(25 * sizeof(monster));
   
   data->id = counter;
   

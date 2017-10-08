@@ -21,6 +21,20 @@ void PayrollSystem::addEmployee(string firstName, string lastName, double wage, 
   cout << "How many hours has this employee worked?" << endl;
   cin >> hours;
   
-  Employee *employee = new Employee(fullId, firstName, lastName, wage, hours);
+  Employee newEmployee(fullId, firstName, lastName, wage, hours);
+  
+  PayrollSystem::employees.push_back(newEmployee);
+}
+
+void PayrollSystem::findAndErase(string id) {
+  
+  Employee employee(NULL, NULL, NULL, NULL, NULL);
+  
+//  for (PayrollSystem i : PayrollSystem::employees) {
+//    if (id == Employee::getEmployeeId()) {
+//      PayrollSystem::employees.erase(i);
+//    }
+//  }
+  
 }
 

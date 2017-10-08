@@ -203,7 +203,7 @@ node *search(node *head, int searchId, int *(*id)(void *ptr)) {
   
   node *cursor = head;
   while (cursor != NULL) {
-    if (searchId == (int) id(cursor->data)) {
+    if (searchId == id(cursor->data)) {
       return cursor;
     }
     cursor = cursor->next;

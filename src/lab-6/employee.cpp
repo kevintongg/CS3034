@@ -20,3 +20,43 @@ double Employee::calcPay(double wage, int hours) {
   
   return totalPay;
 }
+
+const string &Employee::getEmployeeId() const {
+  return employeeId;
+}
+
+void Employee::setEmployeeId(const string &employeeId) {
+  Employee::employeeId = employeeId;
+}
+
+const string &Employee::getFirstName() const {
+  return firstName;
+}
+
+void Employee::setFirstName(const string &firstName) {
+  Employee::firstName = firstName;
+}
+
+const string &Employee::getLastName() const {
+  return lastName;
+}
+
+void Employee::setLastName(const string &lastName) {
+  Employee::lastName = lastName;
+}
+
+double Employee::getWage() const {
+  return wage;
+}
+
+void Employee::setWage(double wage) {
+  Employee::wage = wage;
+}
+
+int Employee::getHours() const {
+  return hours;
+}
+
+void Employee::setHours(int hours) {
+  Employee::hours = hours;
+}

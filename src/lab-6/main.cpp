@@ -11,5 +11,11 @@ int main() {
   
   PayrollSystem payrollSystem;
   
+  
   payrollSystem.addEmployee("Kevin", "Tong", 12.34, 25);
+  payrollSystem.addEmployee("Cedric", "Tong", 23.45, 26);
+  
+  for (Employee employee : payrollSystem.employees) {
+    cout << employee.getEmployeeId() << endl;
+  }
 }

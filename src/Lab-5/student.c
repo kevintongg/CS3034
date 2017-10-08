@@ -1,13 +1,18 @@
 //
 // Created by Kevin Tong on 3/10/2017.
 //
+
 #include <stdio.h>
+#include <stdlib.h>
 #include "student.h"
 #include "clean.h"
 
 student *create_student(student *data, int counter) {
-
+  
+  data = (student *) malloc(25 * sizeof(student));
+  
   data->id = counter;
+  
   printf("\nEntering information about student #%d\n", data->id);
   puts("Student name?");
   fgets(data->name, sizeof(data->name), stdin);
@@ -15,9 +20,9 @@ student *create_student(student *data, int counter) {
   scanf("%lf", &data->gpa);
   puts("Student CIN?");
   scanf("%i", &data->cin);
-
+  
   clean_stdin();
-
+  
   return data;
 }
 
