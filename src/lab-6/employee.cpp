@@ -7,6 +7,8 @@
 
 using namespace std;
 
+Employee::Employee() = default;
+
 Employee::Employee(string employeeId, string firstName, string lastName, double wage, int hours)
     : employeeId(move(employeeId)),
       firstName(move(firstName)),
@@ -15,11 +17,15 @@ Employee::Employee(string employeeId, string firstName, string lastName, double 
       hours(hours) {}
 
 double Employee::calcPay(double wage, int hours) {
-  
+
   double totalPay = wage * hours;
-  
+
   return totalPay;
 }
+
+/**
+ * Getters and setters
+ **/
 
 const string &Employee::getEmployeeId() const {
   return employeeId;

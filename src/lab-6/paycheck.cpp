@@ -9,22 +9,22 @@
 
 using namespace std;
 
-Paycheck::Paycheck(string employeeId, string firstName, string lastName, double paycheckAmount) : employeeId(
-    move(employeeId)), firstName(move(firstName)), lastName(move(lastName)), paycheckAmount(paycheckAmount) {
-  
-}
+Paycheck::Paycheck() = default;
 
-// eg Paycheck for $666.75 issued to Jerry Jones, employee # E12345
+Paycheck::Paycheck(string employeeId, string firstName, string lastName, double paycheckAmount)
+    : employeeId(move(employeeId)),
+      firstName(move(firstName)),
+      lastName(move(lastName)),
+      paycheckAmount(paycheckAmount) {}
+
+// e.g. Paycheck for $666.75 issued to Jerry Jones, employee # E12345
 
 string Paycheck::getPaycheck() {
-  stringstream pay_precision;
-  pay_precision << fixed << setprecision(2) << paycheckAmount;
-  
-  string payFixedPrecision = pay_precision.str();
-  
-  return "Paycheck issued for $" + payFixedPrecision + "; Paid to the order of: " + firstName + lastName +
-         ", Employee #" + employeeId +
-         "\n";
+
+  auto paycheck = to_string(paycheckAmount);
+
+  return "Paycheck issued for $" + paycheck + "; Paid to the order of: " + firstName + " " + lastName +
+         ", Employee #" + employeeId + "\n";
 }
 
 double Paycheck::getPaycheckAmount() const {
