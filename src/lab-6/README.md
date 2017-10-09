@@ -1,7 +1,7 @@
 # CS 3034 Lab 6: C++ OOP
 Important: this application must use C++ style IO (in this case, cout), not C-style IO (scanf, printf, etc).
 
-For this lab you will create an application that models a payroll system. The application will require you to write at least three classes, as well as a driver. Write whatever contructors, getters, setters, or other methods you need to make the classes work as required. Read the whole assignment before you start planning your solution or writing code.
+For this lab, you will create an application that models a payroll system. The application will require you to write at least three classes, as well as a driver. Write whatever contructors, getters, setters, or other methods you need to make the classes work as required. Read the whole assignment before you start planning your solution or writing code.
 
 #### Employee
 
