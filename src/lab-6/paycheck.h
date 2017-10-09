@@ -40,16 +40,11 @@ public:
 
   void setLastName(const string &lastName);
 
-  int getHoursWorked() const;
-
-  void setHoursWorked(int hoursWorked);
-
 private:
-  double paycheckAmount;
   string id;
   string firstName;
   string lastName;
-  int hoursWorked;
+  double paycheckAmount;
 };
 
 

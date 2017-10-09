@@ -21,10 +21,12 @@ Paycheck::Paycheck() = default;
 
 string Paycheck::getPaycheck(const string &id, const string &firstName, const string &lastName, double paycheckAmount) {
 
-  auto paycheck = to_string(paycheckAmount);
+  stringstream stream;
+  stream << fixed << setprecision(2) << paycheckAmount;
+  string check = stream.str();
 
-  return "Paycheck issued for $" + paycheck + ". Paid to the order of: " + firstName +
-         " " + lastName + ", Employee #" + id + "\n";
+  return "Employee #" + id + ": Paycheck issued for $" + check + ". Paid to the order of: " + firstName + " " +
+         lastName + "\n";
 }
 
 double Paycheck::getPaycheckAmount() const {
@@ -57,12 +59,4 @@ const string &Paycheck::getLastName() const {
 
 void Paycheck::setLastName(const string &lastName) {
   Paycheck::lastName = lastName;
-}
-
-int Paycheck::getHoursWorked() const {
-  return hoursWorked;
-}
-
-void Paycheck::setHoursWorked(int hoursWorked) {
-  Paycheck::hoursWorked = hoursWorked;
 }

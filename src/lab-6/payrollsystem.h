@@ -16,7 +16,9 @@ public:
 
   void findAndErase(string id);
 
-  void issuePaycheck(string id);
+  void recordHours(string id, int hours);
+
+  void issuePaycheck();
 
   vector<Employee> employees;
 
