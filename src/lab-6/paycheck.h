@@ -5,12 +5,14 @@
 #ifndef PAYCHECK
 #define PAYCHECK
 
+#include <vector>
+
 using namespace std;
 
 class Paycheck {
 
 public:
-  Paycheck(string employeeId, string firstName, string lastName, double paycheckAmount);
+  Paycheck(string id, string firstName, string lastName, double paycheckAmount);
 
   Paycheck();
 
@@ -18,15 +20,17 @@ public:
    * Getters and setters
    **/
 
-  string getPaycheck();
+  string getPaycheck(const string &id, const string &firstName, const string &lastName, double paycheckAmount);
+
+  vector<Paycheck> paychecks;
 
   double getPaycheckAmount() const;
 
   void setPaycheckAmount(double paycheckAmount);
 
-  const string &getEmployeeId() const;
+  const string &getId() const;
 
-  void setEmployeeId(const string &employeeId);
+  void setId(const string &id);
 
   const string &getFirstName() const;
 
@@ -36,11 +40,16 @@ public:
 
   void setLastName(const string &lastName);
 
+  int getHoursWorked() const;
+
+  void setHoursWorked(int hoursWorked);
+
 private:
   double paycheckAmount;
-  string employeeId;
+  string id;
   string firstName;
   string lastName;
+  int hoursWorked;
 };
 
 

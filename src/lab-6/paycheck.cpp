@@ -9,22 +9,22 @@
 
 using namespace std;
 
-Paycheck::Paycheck() = default;
-
-Paycheck::Paycheck(string employeeId, string firstName, string lastName, double paycheckAmount)
-    : employeeId(move(employeeId)),
+Paycheck::Paycheck(string id, string firstName, string lastName, double paycheckAmount)
+    : id(move(id)),
       firstName(move(firstName)),
       lastName(move(lastName)),
       paycheckAmount(paycheckAmount) {}
 
+Paycheck::Paycheck() = default;
+
 // e.g. Paycheck for $666.75 issued to Jerry Jones, employee # E12345
 
-string Paycheck::getPaycheck() {
+string Paycheck::getPaycheck(const string &id, const string &firstName, const string &lastName, double paycheckAmount) {
 
   auto paycheck = to_string(paycheckAmount);
 
-  return "Paycheck issued for $" + paycheck + "; Paid to the order of: " + firstName + " " + lastName +
-         ", Employee #" + employeeId + "\n";
+  return "Paycheck issued for $" + paycheck + ". Paid to the order of: " + firstName +
+         " " + lastName + ", Employee #" + id + "\n";
 }
 
 double Paycheck::getPaycheckAmount() const {
@@ -35,12 +35,12 @@ void Paycheck::setPaycheckAmount(double paycheckAmount) {
   Paycheck::paycheckAmount = paycheckAmount;
 }
 
-const string &Paycheck::getEmployeeId() const {
-  return employeeId;
+const string &Paycheck::getId() const {
+  return id;
 }
 
-void Paycheck::setEmployeeId(const string &employeeId) {
-  Paycheck::employeeId = employeeId;
+void Paycheck::setId(const string &id) {
+  Paycheck::id = id;
 }
 
 const string &Paycheck::getFirstName() const {
@@ -57,4 +57,12 @@ const string &Paycheck::getLastName() const {
 
 void Paycheck::setLastName(const string &lastName) {
   Paycheck::lastName = lastName;
+}
+
+int Paycheck::getHoursWorked() const {
+  return hoursWorked;
+}
+
+void Paycheck::setHoursWorked(int hoursWorked) {
+  Paycheck::hoursWorked = hoursWorked;
 }

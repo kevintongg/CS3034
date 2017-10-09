@@ -12,24 +12,14 @@
 class PayrollSystem {
 
 public:
-  void addEmployee(string firstName, string lastName, double wage, int hours);
+  void addEmployee(string employeeID, string firstName, string lastName, double wage, int hours);
 
   void findAndErase(string id);
 
+  void issuePaycheck(string id);
+
   vector<Employee> employees;
 
-  const vector<Employee> &getEmployees() const;
-
-  void setEmployees(const vector<Employee> &employees);
-
 };
-
-const vector<Employee> &PayrollSystem::getEmployees() const {
-  return employees;
-}
-
-void PayrollSystem::setEmployees(const vector<Employee> &employees) {
-  PayrollSystem::employees = employees;
-}
 
 #endif // PAYROLLSYSTEM
