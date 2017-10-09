@@ -43,6 +43,7 @@ int main() {
   cout << "Payroll for Ace Peat Moss Inc.:" << endl;
   payrollSystem.issuePaycheck();
   cout << endl;
+  sleep(1);
 
   /**
    * Deleting an employee
@@ -52,6 +53,7 @@ int main() {
   sleep(2);
   cout << "Employee deleted." << endl;
   cout << endl;
+  sleep(1);
 
   /**
    * Recording new hours
