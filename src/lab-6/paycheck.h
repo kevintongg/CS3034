@@ -22,8 +22,6 @@ public:
 
   string getPaycheck(const string &id, const string &firstName, const string &lastName, double paycheckAmount);
 
-  vector<Paycheck> paychecks;
-
   double getPaycheckAmount() const;
 
   void setPaycheckAmount(double paycheckAmount);

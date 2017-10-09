@@ -16,10 +16,10 @@ int main() {
    * Adding at least four employees
    **/
   cout << "Adding four employees..." << endl;
-  payrollSystem.addEmployee("E0001", "Mary", "Smith", 21, 0);
-  payrollSystem.addEmployee("E0002", "Jerry", "Jones", 17, 0);
-  payrollSystem.addEmployee("E0003", "John", "Doe", 24, 0);
-  payrollSystem.addEmployee("E0004", "Jane", "Doe", 25, 0);
+  payrollSystem.addEmployee("E0001", "Mary", "Smith", 21.34, 0);
+  payrollSystem.addEmployee("E0002", "Jerry", "Jones", 17.27, 0);
+  payrollSystem.addEmployee("E0003", "John", "Doe", 24.71, 0);
+  payrollSystem.addEmployee("E0004", "Jane", "Doe", 25.46, 0);
   cout << endl;
   sleep(2);
 
