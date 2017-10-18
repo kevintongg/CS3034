@@ -3,12 +3,13 @@
 //
 
 #include <iostream>
-#include <math.h>
+#include <cmath>
 #include "circle.h"
 
 using namespace std;
 
-Circle::Circle(double radiusIn) : radius(radiusIn) {}
+Circle::Circle(double radiusIn)
+    : radius(radiusIn) {}
 
 double Circle::getArea() const {
   return M_PI * pow(radius, 2);
@@ -22,7 +23,7 @@ bool Circle::operator==(const Circle &other) {
 Circle Circle::operator+(const Circle &other) {
   double combinedArea = M_PI * pow(radius, 2) + other.getArea();
   double newRadius = sqrt(combinedArea / M_PI);
-  return Circle(newRadius);
+  return {newRadius};
 }
 
 Circle Circle::operator-(const Circle &other) {

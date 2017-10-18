@@ -1,15 +1,23 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-// A normal function with an int parameter
-// and void return type
-void fun(int a) {
-  printf("Value of a is %d\n", a);
-}
+typedef struct student{
+  int id;
+  int age;
+  double balance_owed;
+}student;
 
-int main() {
-  void (*fun_ptr)(int) = fun;  // & removed
-
-  fun_ptr(10);  // * removed
-
+int main(int argc, char **argv) {
+  const int num_students = 1000;
+  student *students = (struct student *) malloc(num_students * sizeof(struct student));
+  
+  student student;
+  
+  
+  students->id=1;
+  
+  printf("%i",*student.id);
+  
+  
   return 0;
 }
