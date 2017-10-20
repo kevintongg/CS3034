@@ -38,9 +38,11 @@ int main() {
   int springfield = 15;
   
   if (springfield < masterBlob) {
-    cout << "Springfield has size " << springfield << " and giant Blob has size " << masterBlob << "; Springfield has been destroyed!" << endl;
+    cout << "Springfield has size " << springfield << " and giant Blob has size " << masterBlob
+         << "; Springfield has been destroyed!" << endl;
   } else if (springfield > masterBlob) {
-    cout << "Springfield has size " << springfield << " and giant Blob has size " << masterBlob << "; Springfield has been saved!" << endl;
+    cout << "Springfield has size " << springfield << " and giant Blob has size " << masterBlob
+         << "; Springfield has been saved!" << endl;
   }
   
   return 0;
