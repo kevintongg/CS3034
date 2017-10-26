@@ -9,18 +9,16 @@
 #include "predator.h"
 
 class Cat : public Predator {
-  
-  friend ostream &operator<<(ostream &stream, const Cat cat);
 
 public:
+  friend ostream &operator<<(ostream &stream, const Cat &cat);
+
   Cat(const string &name, double weight);
-  
+
   void call() override;
-  
-  ostream operator<<(ostream &stream);
-  
+
   void predate(const Prey &prey) override;
-  
+
 };
 
 

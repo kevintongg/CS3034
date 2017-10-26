@@ -28,3 +28,8 @@ double Animal::getWeight() const {
 void Animal::setWeight(double weight) {
   Animal::weight = weight;
 }
+
+ostream &Animal::operator<<(ostream &stream) {
+  return stream;
+}
+

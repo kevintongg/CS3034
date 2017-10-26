@@ -11,10 +11,10 @@ using namespace std;
 
 class Savings {
   
-  friend ostream &operator<<(ostream &output, const Savings &s);
+  friend ostream &operator<<(ostream &stream, const Savings &s);
 
 public:
-  Savings(const string &owner, double balance, int accountNumber);
+  Savings(string owner, double balance, int accountNumber);
   
   Savings();
   
@@ -32,15 +32,15 @@ public:
 
 private:
   string owner;
-  double balance;
-  int accountNumber;
+  double balance{};
+  int accountNumber{};
 };
 
 
 #endif // SAVINGS
 
-Savings::Savings(const string &owner, double balance, int accountNumber)
-    : owner(owner),
+Savings::Savings(string owner, double balance, int accountNumber)
+    : owner(std::move(owner)),
       balance(balance),
       accountNumber(accountNumber) {}
 
@@ -76,6 +76,7 @@ void Savings::setAccountNumber(int accountNumber) {
 Savings::Savings() = default;
 
 #include <queue>
+#include <utility>
 
 class CompareAccountNumber {
 

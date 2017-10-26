@@ -25,6 +25,8 @@ public:
   void setWeight(double weight);
   
   virtual void call() = 0;
+
+  virtual ostream &operator<<(ostream &stream);
   
 protected:
   string name;

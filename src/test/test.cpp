@@ -1,40 +1,58 @@
 #include <iostream>
+#include <utility>
+#include <utility>
+#include <vector>
 
 using namespace std;
 
-string alpha(string s) {
-  for (size_t i = 0; i < s.size(); ++i) {
-    if (isalpha(s[i])) {
-      continue;
-    } else if (!isalpha(s[i])) {
-      s = s.substr(0, i) + s.substr(i + 1, s.size() - 1);
-    }
-  }
-  return s;
-}
+class Monster {
+public:
+  explicit Monster(string nameIn)
+      : name(std::move(std::move(nameIn))) {}
 
-bool isPalindrome(string s) {
-  
-  char left = tolower(s[0]);
-  char right = tolower(s[s.size() - 1]);
-  if (isalpha(left) && isalpha(right)) {
-    if (left == right && !s.empty()) {
-      s = s.substr(1, s.size() - 2);
-      return isPalindrome(s);
-    } else if (left != right) {
-      return false;
-    }
-  }
-  return true;
-}
+  virtual void rampage() = 0;
 
-int main(int argc, char *argv[]) {
-  
-  string s = argv[1];
-  if (isPalindrome(alpha(s))) {
-    cout << s << " is a palindrome" << endl;
-  } else {
-    cout << s << " is not a palindrome" << endl;
+  string getName() const { return name; }
+
+private:
+  string name;
+};
+
+class Zombie : public Monster {
+public:
+  explicit Zombie(string nameIn)
+      : Monster(std::move(nameIn)) {};
+
+  void rampage() override {
+    std::cout << getName() << " joins a herd of zombies searching for brains\n";
   }
+};
+
+class Vampire : public Monster {
+public:
+  explicit Vampire(string nameIn)
+      : Monster(std::move(nameIn)) {};
+
+  void rampage() override {
+    std::cout << getName() << " turns into a bat and flies through your window to suck your blood\n";
+  }
+};
+
+
+int main() {
+
+  Monster *x = new Vampire("X");    // OK
+  //Monster *y = new Monster("Y");    // error: Monster is abstract
+
+  vector<Monster *> monsters;
+  monsters.push_back(new Zombie("Zelda"));
+  monsters.push_back(new Zombie("Zaphrod"));
+  monsters.push_back(new Vampire("Vinnie"));
+  monsters.push_back(new Vampire("Von"));
+
+  for (Monster *m: monsters) {
+    m->rampage();
+  }
+
   return 0;
 }

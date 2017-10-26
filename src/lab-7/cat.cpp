@@ -12,7 +12,7 @@ void Cat::call() {
 }
 
 ostream &operator<<(ostream &stream, const Cat &cat) {
-  stream << cat.getName() << " is a Cat weighing " << cat.getWeight() << " grams." << endl;
+  stream << cat.getName() << " is a cat weighing " << cat.getWeight() << " grams.";
   return stream;
 }
 
