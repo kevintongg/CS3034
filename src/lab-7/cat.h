@@ -10,14 +10,16 @@
 
 class Cat : public Predator {
 
+
 public:
-  friend ostream &operator<<(ostream &stream, const Cat &cat);
 
   Cat(const string &name, double weight);
 
   void call() override;
 
   void predate(const Prey &prey) override;
+
+  friend ostream &operator<<(ostream &stream, const Cat &cat);
 
 };
 

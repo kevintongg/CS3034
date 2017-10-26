@@ -23,27 +23,31 @@ double getRandomNumber() {
 
 int main() {
 
-  auto *cat = new Cat("Jerry", 20);
+  auto cat = new Cat("Jerry", 4082.33);
+  cout << *cat << endl;
   cat->call();
 
   vector<Prey *> prey;
 
-  auto *bird1 = new Bird("Tweety", 15.0);
-//  auto *bird2 = new Bird("Donald", 30);
-//  auto *mouse1 = new Mouse("Jerry", 10);
-//  auto *mouse2 = new Mouse("Mickey", 27);
-//
-//  bird1->call();
-//
-//  prey.emplace_back(bird1);
-//  prey.emplace_back(bird2);
-//  prey.emplace_back(mouse1);
-//  prey.emplace_back(mouse2);
-//
-//  for (Prey *p : prey) {
-//    p->call();
-//
-//  }
+  auto bird1 = new Bird("Tweety", 35.2);
+  auto bird2 = new Bird("Donald", 40.1);
+  auto mouse1 = new Mouse("Jerry", 15.4);
+  auto mouse2 = new Mouse("Mickey", 19.8);
+
+  prey.emplace_back(bird1);
+  prey.emplace_back(bird2);
+  prey.emplace_back(mouse1);
+  prey.emplace_back(mouse2);
+
+  for (Prey *p : prey) {
+    p->call();
+    if (getRandomNumber() < 0.5) {
+      cat->predate(*p);
+    } else {
+      p->flee();
+    }
+
+  }
 
   return 0;
 }
