@@ -2,6 +2,7 @@
 // Created by kcr12_000 on 25/10/2017.
 //
 
+#include <iostream>
 #include <vector>
 #include <random>
 #include <unistd.h>
