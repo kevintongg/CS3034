@@ -8,7 +8,7 @@ Cat::Cat(const string &name, double weight)
     : Predator(name, weight) {}
 
 void Cat::call() {
-  cout << this->getName() << " says 'Meow'" << endl;
+  cout << this->getName() << " says 'meow!'" << endl;
 }
 
 ostream &operator<<(ostream &stream, const Cat &cat) {
