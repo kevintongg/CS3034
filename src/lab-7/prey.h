@@ -16,5 +16,4 @@ public:
   virtual void flee() = 0;
 };
 
-
 #endif // PREY

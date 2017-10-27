@@ -17,5 +17,4 @@ public:
   virtual void predate(const Prey &prey) = 0;
 };
 
-
 #endif // PREDATOR

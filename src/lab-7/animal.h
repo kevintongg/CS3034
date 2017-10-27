@@ -33,5 +33,4 @@ protected:
   double weight;
 };
 
-
 #endif // ANIMAL

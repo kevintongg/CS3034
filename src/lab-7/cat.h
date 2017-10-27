@@ -23,5 +23,4 @@ public:
 
 };
 
-
 #endif //PROJECT_CAT_H

@@ -18,5 +18,4 @@ public:
   void flee() override;
 };
 
-
 #endif // Bird

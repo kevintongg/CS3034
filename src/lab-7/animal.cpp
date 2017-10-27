@@ -32,4 +32,3 @@ void Animal::setWeight(double weight) {
 ostream &Animal::operator<<(ostream &stream) {
   return stream;
 }
-
