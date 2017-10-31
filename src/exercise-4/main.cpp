@@ -22,6 +22,7 @@ int main() {
       for (Stock s : storage.readFromFile()) {
         s.showStocks();
       }
+      break;
     default:
       break;
   }

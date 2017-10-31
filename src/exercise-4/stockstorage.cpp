@@ -25,7 +25,7 @@ void StockStorage::writeHardCodedStocks() {
   cin >> filePath;
   myFile.open(filePath);
   
-  for (Stock s : stocks) {
+  for (const Stock &s : stocks) {
     myFile << s.getCSVString();
   }
   
