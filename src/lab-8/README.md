@@ -8,7 +8,7 @@
 * A Person has ints for month, day, and year of birth, std::strings for first name and last name, and a char for gender.
 * FamilyTree needs the following functions:
   * setRoot(node) sets the node as one of the roots of the tree. If the tree already has two roots, print an error message.
-  * addNode(nodeA) adds a FamilyTreeNode to the FamilyTree. It should update the parent nodes to add teh new node to their lists of children.
+  * addNode(nodeA) adds a FamilyTreeNode to the FamilyTree. It should update the parent nodes to add the new node to their lists of children.
   * getAllNodes() returns a std::set of all nodes in the tree.
   * getDescendants(node a) uses a breadth first traversal to get a vector of all descendants of node a (its children, their children, etc.) Cycles should not occur with correct data, but one node might be descended from another in more than one way (for example, if two cousins have a child together.) In this case, a node will appear more than once in the descendants list.
   * isDescendantOf(node1, node2) returns a bool that indicates whether node1 is a descendant of node2. It should do this by running getDescendants() on node2 and searching the vector for node1.
