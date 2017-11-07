@@ -13,6 +13,8 @@ typedef struct FamilyTreeNode {
   Parent father;
   Parent mother;
   vector<Child *> children{};
-} FamilyTreeNode;
+} TreeNode;
+
+
 
 #endif // FAMILYTREENODE

@@ -6,6 +6,7 @@
 #define FAMILYTREE
 
 #include <vector>
+#include <set>
 #include "person.h"
 #include "parent.h"
 #include "child.h"
@@ -16,37 +17,39 @@ class FamilyTree {
 
 public:
   
-  FamilyTree(string familyName, FamilyTreeNode firstRoot, FamilyTreeNode secondRoot);
-  
+  FamilyTree(string familyName, TreeNode firstRoot, TreeNode secondRoot);
+
+  explicit FamilyTree(string familyName);
+
   const string &getFamilyName() const;
   
   void setFamilyName(const string &familyName);
   
-  const FamilyTreeNode &getFirstRoot() const;
+  const TreeNode &getFirstRoot() const;
   
-  void setFirstRoot(const FamilyTreeNode &firstRoot);
+  void setFirstRoot(const TreeNode &firstRoot);
   
-  const FamilyTreeNode &getSecondRoot() const;
+  const TreeNode &getSecondRoot() const;
   
-  void setSecondRoot(const FamilyTreeNode &secondRoot);
+  void setSecondRoot(const TreeNode &secondRoot);
   
-  FamilyTreeNode *setRoot(FamilyTreeNode *node);
+  TreeNode *setRoot(TreeNode *node);
   
-  void addNode(FamilyTreeNode *Node);
+  void addNode(TreeNode *Node);
   
-  void getAllNodes();
+  set<TreeNode *> getAllNodes();
   
-  void getDescendants(FamilyTreeNode *node);
+  vector<TreeNode *> getDescendants(TreeNode *node);
   
-  bool isDescendantOf(FamilyTreeNode *node1, FamilyTreeNode *node2);
+  bool isDescendant(TreeNode *node1, TreeNode *node2);
   
-  void getAncestors(FamilyTreeNode *node);
+  vector<TreeNode *> getAncestors(TreeNode *node);
   
-  bool isAncestorOf(FamilyTreeNode *node1, FamilyTreeNode *node2);
+  bool isAncestor(TreeNode *node1, TreeNode *node2);
 
 private:
   string familyName;
-  FamilyTreeNode firstRoot, secondRoot;
+  TreeNode firstRoot, secondRoot;
 };
 
 

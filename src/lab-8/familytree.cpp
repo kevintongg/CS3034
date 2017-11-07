@@ -3,18 +3,22 @@
 //
 
 #include <iostream>
+#include <set>
 #include "familytree.h"
 
 using namespace std;
 
-FamilyTree::FamilyTree(string familyName, FamilyTreeNode firstRoot, FamilyTreeNode secondRoot)
+FamilyTree::FamilyTree(string familyName, TreeNode firstRoot, TreeNode secondRoot)
     : familyName(move(familyName)),
       firstRoot(move(firstRoot)),
       secondRoot(move(secondRoot)) {}
 
-FamilyTreeNode *FamilyTree::setRoot(FamilyTreeNode *node) {
+FamilyTree::FamilyTree(string familyName) :
+    familyName(move(familyName)) {}
+
+TreeNode *FamilyTree::setRoot(TreeNode *node) {
   int rootCounter = 0;
-  auto *newNode = (FamilyTreeNode *) malloc(sizeof(FamilyTreeNode));
+  auto *newNode = (TreeNode *) malloc(sizeof(TreeNode));
   if (rootCounter <= 2) {
     if (newNode == nullptr) {
       cout << "Error setting new root." << endl;
@@ -24,32 +28,32 @@ FamilyTreeNode *FamilyTree::setRoot(FamilyTreeNode *node) {
     cout << "We already have 2 roots! Sorry!" << endl;
     return nullptr;
   }
-  
-}
-
-void FamilyTree::addNode(FamilyTreeNode *node) {
 
 }
 
-void FamilyTree::getAllNodes() {
+void FamilyTree::addNode(TreeNode *node) {
 
 }
 
-void FamilyTree::getDescendants(FamilyTreeNode *node) {
+set<TreeNode *> FamilyTree::getAllNodes() {
 
 }
 
-bool FamilyTree::isDescendantOf(FamilyTreeNode *node1, FamilyTreeNode *node2) {
+vector<TreeNode *> FamilyTree::getDescendants(TreeNode *node) {
+
+}
+
+bool FamilyTree::isDescendant(TreeNode *node1, TreeNode *node2) {
   return false;
 }
 
-void FamilyTree::getAncestors(FamilyTreeNode *node) {
+vector<TreeNode *> FamilyTree::getAncestors(TreeNode *node) {
 
 }
 
-bool FamilyTree::isAncestorOf(FamilyTreeNode *node1, FamilyTreeNode *node2) {
+bool FamilyTree::isAncestor(TreeNode *node1, TreeNode *node2) {
   if (getAncestors(node2) == getAncestors(node1)) {
-  
+
   }
 }
 
@@ -61,18 +65,18 @@ void FamilyTree::setFamilyName(const string &familyName) {
   FamilyTree::familyName = familyName;
 }
 
-const FamilyTreeNode &FamilyTree::getFirstRoot() const {
+const TreeNode &FamilyTree::getFirstRoot() const {
   return firstRoot;
 }
 
-void FamilyTree::setFirstRoot(const FamilyTreeNode &firstRoot) {
+void FamilyTree::setFirstRoot(const TreeNode &firstRoot) {
   FamilyTree::firstRoot = firstRoot;
 }
 
-const FamilyTreeNode &FamilyTree::getSecondRoot() const {
+const TreeNode &FamilyTree::getSecondRoot() const {
   return secondRoot;
 }
 
-void FamilyTree::setSecondRoot(const FamilyTreeNode &secondRoot) {
+void FamilyTree::setSecondRoot(const TreeNode &secondRoot) {
   FamilyTree::secondRoot = secondRoot;
 }
