@@ -13,8 +13,12 @@ typedef struct FamilyTreeNode {
   Parent father;
   Parent mother;
   vector<Child *> children{};
-} TreeNode;
 
+  const string & getFullName() {
+    const string &fullName = person->getFirstName() + person->getLastName();
+    return fullName;
+  }
+} TreeNode;
 
 
 #endif // FAMILYTREENODE
