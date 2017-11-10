@@ -5,54 +5,80 @@
 
 using namespace std;
 
-class Monster {
+class Student {
+
 public:
-  explicit Monster(string nameIn)
-      : name(std::move(std::move(nameIn))) {}
+  Student(int id, string firstName, string lastName)
+      : id(id),
+        firstName(move(firstName)),
+        lastName(move(lastName)) {}
 
-  virtual void rampage() = 0;
+  Student() = default;
 
-  string getName() const { return name; }
+  vector<Student> students;
+
+  void addStudent(int id, const string &firstName, const string &lastName) {
+    auto newStudent = new Student(id, firstName, lastName);
+
+    students.emplace_back(newStudent);
+  }
+
+  bool checkID(int id) {
+
+    for (Student student : students) {
+      if (student.getId() == id) {
+        cout << "Student found!" << endl;
+        return true;
+      } else {
+        cout << "Student not found!" << endl;
+        return false;
+      }
+    }
+  }
+
+  const vector<Student> &getStudents() {
+    return students;
+  }
+
+  void setStudents(const vector<Student> &students) {
+    Student::students = students;
+  }
+
+  const int &getId() const {
+    return id;
+  }
+
+  void setId(const int &id) {
+    Student::id = id;
+  }
+
+  const string &getFirstName() const {
+    return firstName;
+  }
+
+  void setFirstName(const string &firstName) {
+    Student::firstName = firstName;
+  }
+
+  const string &getLastName() const {
+    return lastName;
+  }
+
+  void setLastName(const string &lastName) {
+    Student::lastName = lastName;
+  }
 
 private:
-  string name;
-};
-
-class Zombie : public Monster {
-public:
-  explicit Zombie(string nameIn)
-      : Monster(std::move(nameIn)) {};
-
-  void rampage() override {
-    std::cout << getName() << " joins a herd of zombies searching for brains\n";
-  }
-};
-
-class Vampire : public Monster {
-public:
-  explicit Vampire(string nameIn)
-      : Monster(std::move(nameIn)) {};
-
-  void rampage() override {
-    std::cout << getName() << " turns into a bat and flies through your window to suck your blood\n";
-  }
+  int id{};
+  string firstName, lastName;
 };
 
 
 int main() {
 
-  Monster *x = new Vampire("X");    // OK
-  //Monster *y = new Monster("Y");    // error: Monster is abstract
+  auto *student = new Student();
 
-  vector<Monster *> monsters;
-  monsters.push_back(new Zombie("Zelda"));
-  monsters.push_back(new Zombie("Zaphrod"));
-  monsters.push_back(new Vampire("Vinnie"));
-  monsters.push_back(new Vampire("Von"));
+  student->addStudent(123, "Kevin", "Tong");
 
-  for (Monster *m: monsters) {
-    m->rampage();
-  }
-
-  return 0;
+  student->checkID(123);
 }

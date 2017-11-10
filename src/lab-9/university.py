@@ -1,22 +1,61 @@
+import sys
+
+from .course import Course
+from .student import Student
+
+
 class University:
-    def __init__(self, student_name, student_id, course_id, course_name):
+    students = None
+
+    def __init__(self):
         self._students = []
         self._courses = []
-        self._student_name = student_name
-        self._student_id = student_id
-        self._course_id = course_id
-        self._course_name = course_name
+        self._enrolled = []
 
-    def __str__(self):
-        return self._student_name + ", " + "Student ID #" + str(self._student_id) + " is enrolled in:\nCourse #" + str(
-            self.student_id) + ": " + self.course_name + "\n"
-
-    def find_student(self, id):
-        for i in range(len(self._students)):
-            if i. == self._student_id:
-
-    def get_students(self):
+    @property
+    def students(self):
         return self._students
 
-    def get_student_id(self):
-        return self._student_id
+    @students.setter
+    def students(self, students):
+        pass
+
+    @students.deleter
+    def students(self):
+        pass
+
+    @property
+    def courses(self):
+        return self._courses
+
+    @courses.setter
+    def courses(self, value):
+        pass
+
+    @courses.deleter
+    def courses(self):
+        pass
+
+    def __str__(self):
+        pass
+
+    def create_course(self, name, course_id):
+        self._courses.append(Course(name, course_id))
+
+    def list_courses(self):
+        for i in self.courses:
+            print(i)
+
+    def create_student(self, name, student_id):
+        self._students.append(Student(name, student_id))
+
+
+def main():
+    university = University()
+
+    university.create_course("English", 101)
+    university.list_courses()
+
+
+if __name__ == '__main__':
+    main()
