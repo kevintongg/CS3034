@@ -41,7 +41,13 @@ public:
 
 private:
   int month, day, year;
-  string firstName, lastName;
+  string firstName, lastName, fullName;
+public:
+  const string &getFullName() const;
+  
+  void setFullName(const string &fullName);
+
+private:
   char gender;
 };
 
@@ -91,6 +97,14 @@ char Person::getGender() const {
 
 void Person::setGender(char gender) {
   Person::gender = gender;
+}
+
+const string &Person::getFullName() const {
+  return this->firstName + " " + this->lastName;
+}
+
+void Person::setFullName(const string &fullName) {
+  Person::fullName = fullName;
 }
 
 #endif // PERSON

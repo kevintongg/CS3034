@@ -9,9 +9,9 @@
 #include "child.h"
 
 typedef struct FamilyTreeNode {
-  Person *person{};
-  Parent father;
-  Parent mother;
+  Person *person;
+  Parent *father;
+  Parent *mother;
   vector<Child *> children{};
 
   const string & getFullName() {
